@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Hotels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+        }
+        .nav {
+            position:fixed;
+            width: 100%;
+            height: 90px;
+            /* background-color: blue; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+        .nav ul{
+            list-style-type: none;
+            display: flex;
+        }
+        .nav ul li{
+            padding: 10px;
+        }
+        .nav ul li a {
+            text-decoration: none;
+            font-size: 23px;
+            color: goldenrod;
+        }
+        .nav img{
+            margin-left: 50px;
+        }
+        .nav button{
+            padding: 8px 23px;
+            margin-right: 30px;
+            border: none;
+            border-radius: 6px;
+            background-color: goldenrod;
+            color: white;
+            font-size: 15px;
+        }
+        .checkbts i{
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+        #check{
+            display: none;
+        }
+        @media (max-width:500px) {
+            .checkbts i{
+                margin-right: 30px;
+                display: block;
+            }
+            ul{
+                flex-direction: column;
+                position: fixed;
+                width: 100%;
+                height: 260px;
+                background: #2c3e50;
+                top: 90px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s linear;
+            }
+            .nav ul li{
+                display: block;
+                margin: 0px;
+            }
+            .nav li:hover{
+                background-color: #0082e6;
+                border-radius: 3px;
+            }
+            .nav ul li a{
+                font-size: 20px;
+
+            }
+            a:hover a.active{
+                background: none;
+                color: #000005;
+            }
+            #check:checked ~ ul{
+                left: 0;
+            }
+           
+            .nav button{
+                position: absolute;
+                display: block;
+                margin-top: 4px;
+                margin-left: 200px;
+            }
+        }
+        .main{
+            background-color: #000005;
+            width: 100%;
+            height: 200vb;
+            position: absolute;
+            top: 0px;
+            z-index: -1;
+        }
+    
+        @media (max-width:500px) {
+            .main{ 
+                width: 100%;
+                height: 100vb;
+                margin-top: 280px;
+              
+            }
+            .main video{ 
+                width: 100%;
+                /* margin-top: 350px; */
+                position: absolute;
+                top: 100px;
+            
+            }
+        }
+        .main1{
+            width: 100%;
+            height: 100vb;
+            position: absolute;
+            top: 100vb;
+        }
+        .two{
+            width: 100%;
+            font-size: 45px;
+            height: 200px;
+            margin-top: 70px;
+           
+            display: flex;
+            color: rgba(209, 161, 38, 0.788);
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .two label::after{
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 10%;
+            height: 2px;
+            background-color: rgba(209, 161, 38, 0.788);
+            display: block;
+        }
+        .two label::before{
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: 1200px;
+            width: 10%;
+            height: 2px;
+            background-color: rgba(209, 161, 38, 0.788);
+            display: block;
+        }
+        @media (max-width:500px) {
+            .two{
+            width: 100%;
+            font-size: 40px;
+            height: 200px;
+            text-align: center;
+            margin-top: 70px;
+            padding: 35px;
+            display: flex;
+            color: rgba(209, 161, 38, 0.788);
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .two label::after{
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            width: 12%;
+            height: 2px;
+            background-color: rgba(209, 161, 38, 0.788);
+            display: block;
+        }
+        .two label::before{
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: 380px;
+            width: 12%;
+            height: 2px;
+            background-color: rgba(209, 161, 38, 0.788);
+            display: block;
+        }
+        
+        }
+        .two1{
+            width: 100%;
+            height: 200px;
+            font-size: 23px;
+            display: flex;
+            margin-top: -80px;
+            justify-content: center;
+            align-items: center;
+        }
+        .a{
+            
+            width: 650px;
+            color: white;
+            text-align: center;
+        }
+        @media (max-width:500px) {
+            .two1{
+            width: 100%;
+            height: 150px;
+            font-size: 17px;
+            display: flex;
+            margin-top: 0px;
+            justify-content: center;
+            align-items: center;
+        }
+        }
+        .two2{
+            width: 100%;
+            height: 100vb;
+            position: relative;
+        }
+        
+        
+        .two2{
+         animation-name: slide;
+         animation-duration: 8s;
+         animation-timing-function: linear;
+         animation-iteration-count: infinite; 
+        
+    
+        }
+        @keyframes  slide{
+            0%{
+                width: 100%;          
+                background-image: url(internal\ 1.webp);
+                background-repeat: no-repeat;
+                background-size: 95% 95%;
+                background-position: center;
+            }
+            25%{
+                width: 100%;
+               
+                background-image: url(internal\ 2.webp);
+                background-repeat: no-repeat;
+                background-size: 95% 95%;
+                background-position: center;
+            }
+            50%{
+                width: 100%;
+
+                background-image: url(internal\ 3.jpg);
+                background-repeat: no-repeat;
+                background-size: 95% 95%;
+                background-position: center;
+            }
+            75%{
+                width: 100%;
+    
+                background-image: url(internal\ 4.png);
+                background-repeat: no-repeat;
+                background-size: 95% 95%;
+                background-position: center;
+            }
+            100%{
+                width: 100%;
+    
+                background-image: url(internal\ 1.webp);
+                background-repeat: no-repeat;
+                background-size: 95% 95%;
+                background-position: center;
+            }
+        }
+        
+        .two2{
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .a1{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a5 {
+            color: white;
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 607px;
+            left: 72px;
+            transition: all 5s linear;
+        }
+        .a5 p{
+            display: none;
+        }
+        .a5:hover{
+            width: 300px;
+            height: 300px;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 307px;
+            left: 72px;
+        }
+        .a5:hover{
+            p{
+                display: block;
+            }
+        }
+        .a2{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a6 {
+            color: white;
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 607px;
+            left: 400px;
+            transition: all 5s linear;
+        }
+        .a6 p{
+            display: none;
+        }
+        .a6:hover{
+            width: 300px;
+            height: 300px;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 307px;
+            left: 370px;
+        }
+        .a6:hover{
+            p{
+                display: block;
+            }
+        }
+        .a3{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a7{
+            color: white;
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 607px;
+            left: 700px;
+            transition: all 5s linear;
+        }
+        .a7 p{
+            display: none;
+        }
+        .a7:hover{
+            width: 300px;
+            height: 300px;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 307px;
+            left: 670px;
+        }
+        .a7:hover{
+            p{
+                display: block;
+            }
+        }
+        .a4{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a8{
+            color: white;
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 607px;
+            left: 1000px;
+            transition: all 5s linear;
+        }
+        .a8 p{
+            display: none;
+        }
+        .a8:hover{
+            width: 300px;
+            height: 300px;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 307px;
+            left: 970px;
+        }
+        .a8:hover{
+            p{
+                display: block;
+            }
+        }
+        @media (max-width:500px) {
+            .two2{
+            flex-direction: column;
+
+        }
+        .a1{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .two2{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .a5 {
+            width: 90%;
+            color: rgb(202, 138, 138);
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 515px;
+            left: 100px;
+        }
+        .a5 p{
+
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+        .a2{
+            width: 90%;
+            width: 300px;
+            height: 300px;
+            background-color: #0082e6;
+            margin-top: 306px;
+        }
+        .a6 {
+            width: 90%;
+            color: rgb(202, 138, 138);
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 670px;
+            left: 100px;
+        }
+        .a6 p{
+            display: block;
+            
+        }
+        .a3{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a7{
+            width: 90%;
+            color: rgb(202, 138, 138);
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 800px;
+            left: 100px;
+        }
+        .a7 p{
+            display: block;
+        }
+        .a4{
+            width: 300px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .a8{
+            width: 90%;
+            color: rgb(202, 138, 138);
+            text-align: center;
+            width: 250px;
+            position: absolute;
+            top: 930px;
+            left: 100px;
+            transition: all 5s linear;
+        }
+        .a8 p{
+            display: block;
+        }
+       }
+/* **************************************************************************************************************** */
+        .main2{
+            width: 100%;
+            height: 100vb;
+            position: relative;
+            top: 1680px;
+            background-color: black;
+        }
+        @media (max-width:500px) {
+            .main2{
+                position: relative;
+                top: 2000px;
+                width: 96%;
+            }
+        }
+        .b1{
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000005;
+        }
+        .b3{
+            width: 40%;
+            color: white;
+            font-size: 25px;
+            text-indent: 80px;
+            margin-left: 70px;
+        }
+        .b3 h1::after{
+            content: "";
+            height: 2px;
+            width: 18%;
+            background-color: white;
+            display: block;
+            position: relative;
+            top: -86px;
+            left: -7px;
+        }
+        .b4{
+            font-size: 25px;
+            color: white;
+            margin-left: 100px;
+            margin-right: 50px;
+        }
+        @media (max-width:500px) {
+            .b1{
+                flex-direction: column;
+                width: 100%;
+            }
+            .b3{
+            width: 90%;
+            color: white;
+            font-size: 20px;
+            text-indent: 40px;
+            margin-left: 80px;
+            margin-top: 50px;
+        }
+        .b3 h1::after{
+            content: "";
+            height: 2px;
+            width: 13%;
+            background-color: white;
+            display: block;
+            position: relative;
+            top: -72px;
+            left: -15px;
+        }
+        .b4{
+            font-size: 20px;
+            color: rgb(180, 233, 170);
+            width: 90%;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        /* ******************************************* */
+        }
+        .b2{
+            width: 100%;
+            height: 480px;
+            /* background-color: #2c3e50; */
+            display: flex;
+            justify-content: space-between;
+        }
+        .b2{
+         animation-name: slide1;
+         animation-duration: 30s;
+         animation-timing-function: linear;
+         animation-iteration-count: infinite; 
+        }
+        @keyframes slide1 {
+            0%{
+                width: 100%;
+                background-image: url(taj\ holidays.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            13%{
+                width: 100%;
+                background-image: url(neupass.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            26%{
+                width: 100%;
+                background-image: url(epicure.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            39%{
+                width: 100%;
+                background-image: url(gifting.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            52%{
+                width: 100%;
+                background-image: url(timeles\ weddings.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            65%{
+                width: 100%;
+                background-image: url(offers\ &\ promotions.webp);
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+            78%{
+                width: 100%;
+                background-image: url(woyage.webp);
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+            91%{
+                width: 100%;
+                background-image: url(moments\ of\ magic.webp);
+                background-repeat: no-repeat;
+                background-size: 100%
+            }
+            100%{
+                width: 100%;
+                background-image: url(taj\ holidays.webp);
+                background-repeat: no-repeat;
+                background-size: 100%
+            }
+
+        }
+        .b2{
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .b2 h1{
+            font-size: 21px;
+        }
+        .b5{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c1 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 0;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c1 p{
+            display: none;
+        }
+        .c1:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 200px;
+            font-weight: 900;
+            left: 0;
+        }
+        .c1:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+
+        .b6{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        
+        .c2 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 150px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c2 p{
+            display: none;
+        }
+        .c2:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 150px;
+        }
+        .c2:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        .b7{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c3 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 300px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c3 p{
+            display: none;
+        }
+        .c3:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            top: 200px;
+            left: 300px;
+        }
+        .c3:hover{
+            p{
+                background-color: black;
+                display: block;
+            }
+        }
+      
+        .b8{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c4 {
+            color:white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 460px;
+            font-weight: 900;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c4 p{
+            display: none;
+        }
+        .c4:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: white;
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 460px;
+        }
+        .c4:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        
+        .b9{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c5 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 620px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c5 p{
+            display: none;
+        }
+        .c5:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 620px;
+        }
+        .c5:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        .b10{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c6 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 790px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c6 p{
+            display: none;
+        }
+        .c6:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 790px;
+        }
+        .c6:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        .b11{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c7 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 964px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c7 p{
+            display: none;
+        }
+        .c7:hover{
+            width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 964px;
+        }
+        .c7:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        .b12{
+            width: 200px;
+            height: 300px;
+            margin-top: 306px;
+        }
+        .c8 {
+            color: white;
+            text-align: center;
+            width: 200px;
+            position: absolute;
+            top: 480px;
+            left: 1140px;
+            transition: all 5s linear;
+            /* background-color: red; */
+        }
+        .c8 p{
+            display: none;
+        }
+        .c8:hover{
+           width: 200px;
+            height: 300px;
+            padding: 0px 0px;
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(252, 251, 251);
+            position: absolute;
+            font-weight: 900;
+            top: 200px;
+            left: 1140px;
+        }
+        .c8:hover{
+            p{
+                display: block;
+                background-color: black;
+            }
+        }
+        @media (max-width:500px) {
+            .b2{
+                width: 100%;
+                margin-top: 70px;
+            }
+            .b2{
+                flex-direction: column;
+            }
+            
+            .c1 p{
+                display: block;
+            }
+            .c1{
+                padding: 0px 50px;
+                width: 100%;
+                margin-top: -280px;
+                
+            }
+            .c2 p{
+                
+                display: block;
+            }
+            .c2{
+                width: 100%;
+                padding: 0px 50px;
+                margin-top: -180px;
+                position: absolute;
+                left: 0px;
+            }
+            .c3 p{
+                
+                display: block;
+            }
+            .c3{
+                width: 100%;
+                margin-top: -100px;
+                padding: 0px 50px;
+                position: absolute;
+                left: 0px;
+            }
+            .c4 p{
+                
+                display: block;
+            }
+            .c4{
+                width: 100%;
+                margin-top: 0px;
+                padding: 0px 50px;
+                position: absolute;
+                left: 0px;
+            }
+            .c5 p{
+                
+                display: block;
+            }
+            .c5{
+                width: 100%;
+                margin-top: 90px;
+                padding: 0px 50px;
+                position: absolute;
+                left: 0;
+            }
+            .c6 p{
+                
+                display: block;
+            }
+            .c6{
+                width: 100%;
+                margin-top: 200px;
+                position: absolute;
+                padding: 0px 50px;
+                left: 0;
+            }
+            .c7 p{
+                
+                display: block;
+            }
+            .c7{
+                width: 100%;
+                margin-top: 300px;
+                position: absolute;
+                padding: 0px 50px;
+                left: 0;
+            }
+            .c8 p{
+                
+                display: block;
+            }
+            .c8{
+                width: 100%;
+                margin-top: 400px;
+                position: absolute;
+                padding: 0px 50px;
+                left: 0;
+            }
+            
+
+
+
+
+
+
+        }
+/* *********************************************************************************************************************************** */
+
+
+
+
+        
+        
+
+       
+        
+    </style>
+</head>
+<body>
+    <div class="nav">
+       <div class="one">
+        <label for="" class="logo"> <img src="taj name.png" alt=""></label>
+       </div>
+       <input type="checkbox" name="" id="check">
+       <label for="check" class="checkbts">
+           <i class="fa-solid fa-bars-staggered"></i>
+       </label>
+        <ul>
+            <li><a href="">DESTINATIONS</a></li>
+            <li><a href="">HOTELS</a></li>
+            <li><a href="">DINING</a></li>
+            <li><a href="">TAJ HOLIDAYS</a></li>
+            <li><a href="">MEMBERSHIPS</a></li>
+            <li><a href="">MORE</a></li>
+        </ul>
+        <button>BOOK A STAY</button>
+    </div>
+    <div class="main">
+        <video src="video.mp4" autoplay loop="infinite" style="width: 100%; "></video>
+        <audio src="perfect-beauty-191271.mp3" autoplay loop="infinite"></audio>
+    </div>
+
+    <div class="main1">
+        <div class="two">
+            <label for="">GLOBAL ICON OF INDIAN HOSPITALITY</label>
+        </div>
+        <div class="two1">
+            <div class="a"><p>Enter a realm of storied halls, sophisticated delights and unrivalled indulgence. Immerse yourself in the grandeur of luxury at our exquisite palaces, hotels, resorts and safaris.</p></div>
+        </div>
+        <div class="two2">
+           <div class="a1">
+               
+                <div class="a5">
+                    <h1>TIMELESS</h1>
+                    <p>Embrace a timeless elegance that embodies sophistication and an unwavering commitment to refined excellence.</p>
+                </div>
+           </div>
+           <div class="a2">
+            <div class="a6">
+                <h1>ICONIC</h1>
+                <p>Indulge in enduring distinction, extraordinary experiences and a legacy of unparalleled hospitality.</p>
+            </div>
+            
+       </div>
+       <div class="a3">
+        <div class="a7">
+            <h1>AUTHENTIC</h1>
+            <p>Dive into a legacy of impeccable service where true refinement unfolds in every moment of your stay.</p>
+        </div>
+        
+        </div>
+        <div class="a4"> 
+            <div class="a8">
+                <h1>SOULFUL</h1>
+               <p>Cultivate cherished memories and embrace a distinctive sense of belonging through personalised, immersive experiences.</p>
+            </div>
+       </div>
+        </div>
+    </div>
+<!-- *************************************************************************************************************************** -->
+    <div class="main2">
+        <div class="b1">
+            <div class="b3"><h1>EXCLUSIVELY FOR YOU</h1></div>
+            <div class="b4">
+                <p>Refinement and creativity intertwine with dreamike dreamike destinatios and soulful moments on each sojourn with Taj.</p>
+            </div>
+        </div>
+        <div class="b2">
+           
+            <div class="b5">
+                <div class="c1">
+                    <h1>TAJ <br> HOLIDAYS</h1>
+                    <p>Go beyond the ordinary and craft enduring memories with a perfectly curated Taj Holidays.</p>
+                </div>
+            </div>
+            <div class="b6">
+                <div class="c2">
+                    <h1>NEUPASS</h1>
+                    <p>Our exclusive membership program that offers sepical savings on stays, dinig, spas and more.</p>
+                </div>
+            </div>
+           <div class="b7">
+            <div class="c3">
+                <h1>EPLCURE</h1>
+                <p>S world of benefits designed to indulge with member-only savings, unique vochers, exclusive benefits and more.</p>
+            </div>
+           </div>
+           <div class="b8">
+            <div class="c4">
+                <h1>GIFTING </h1>
+                <p>Delight your loved once with unique Taj experience ranging across hotes, restsurents and more.</p>
+            </div>
+           </div>
+            <div class="b9">
+                <div class="c5">
+                    <h1>TIMELESS WEDDINGS</h1>
+                    <p>Let your sepical day trancend into an unfogettable celebration at our iconic destintions, enveloped in our legendary hospitality.</p>
+                </div>
+            </div>
+           <div class="b10">
+            <div class="c6">
+                <h1>OFFEERS & PROMOTIONS</h1>
+                <p>experience unparalleled luxury as you enjoy special savings and exclusive offers through our enticing range of promotions.</p>
+            </div>
+           </div>
+            <div class="b11">
+                <div class="c7">
+                    <h1>WOYAGE</h1>
+                    <p>Woyage is a symphony of packages curated specially for She, ranging form adventage breaks to blissful escpes.</p>
+                </div>
+            </div>
+           <div class="b12">
+            <div class="c8">
+                <h1>MOMENTS OF MAGIC</h1>
+                <p>Enjoy 30% savings with Beat The Heat offers on memoratable Taj Holidays wit your loved oncs.</p>
+            </div>
+    
+
+           </div>
+            
+
+        </div>
+    </div>
+
+
+
+
+
+
+</body>            
+</html>
+
